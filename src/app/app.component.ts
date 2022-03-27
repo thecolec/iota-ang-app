@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'iota-ang-app';
+  title = 'Iota (beta)';
+  button = 'clickme';
 }
