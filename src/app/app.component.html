@@ -1,12 +1,26 @@
 
-<h1>{{title}}</h1>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <app-user-panel></app-user-panel>
-        </div>
-        <div class="col">
-            <app-org-panel></app-org-panel>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/dash">{{ title }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Users Tab -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/users">Users</a>
+                </li>
+                <!-- Organization Tab -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/orgs">Orgs</a>
+                </li>
+                <!-- Misc Tab -->
+                <!-- <li class="nav-item">
+                    <a class="nav-link">Metrics</a>
+                </li> -->
+            </ul>
         </div>
     </div>
-</div>
+</nav>
+<router-outlet></router-outlet>

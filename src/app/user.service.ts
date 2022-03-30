@@ -27,6 +27,10 @@ export class UserService {
   getOrgs(): Observable<Organization[]> {
     return this.http.get<Organization[]>(this.url+'/orgs');
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.url+'/user/add', user);
+  }
 }
 
 

@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #createUser="ngForm">
+            <h5 class="card-title">Create User</h5>
+            <!-- UserName -->
+            <div class="mb-3">
+                <label for="new-user-uName" class="form-label">Username:</label>
+                <input type="text" id="new-user-uName" class="form-control" required
+                [(ngModel)]="model.uName" name="uName"
+                #name="ngModel">
+                <div id="userNameHelp" class="form-text">Must be unique. Will be used to sign-in.</div>
+            </div>
+    
+            <!-- First Name -->
+            <div class="mb-3">
+                <label for="new-user-fName" class="form-label">First Name:</label>
+                <input type="text" id="new-user-fName" class="form-control" required
+                [(ngModel)]="model.fName" name="fName">
+            </div>
+    
+            <!-- Last Name -->
+            <div class="mb-3">
+                <label for="new-user-lName" class="form-label">Last Name:</label>
+                <input type="text" id="new-user-lName" class="form-control" required
+                [(ngModel)]="model.lName" name="lName">
+            </div>
+    
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary"
+            [disabled]="!createUser.form.valid" (click)="newUser(); createUser.reset()">Add User</button>
+        </form>
+    </div>
+</div>
