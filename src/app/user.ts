@@ -1,5 +1,5 @@
-export interface user {
-    id: number;
+export interface User {
+    _id: number;
     fName: string;
     lName: string;
 }

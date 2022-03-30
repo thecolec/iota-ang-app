@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { USERS } from "../mock-users";
+import { User } from '../user';
+
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-panel',
@@ -8,12 +11,17 @@ import { USERS } from "../mock-users";
 })
 export class UserPanelComponent implements OnInit {
 
-  users = USERS;
+  users: User[] = [];
 
-  constructor() { 
+  constructor(private userService: UserService) { 
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.userService.getUsers().subscribe(users => this.users = users);
   }
 
 }
