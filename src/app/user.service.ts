@@ -7,6 +7,8 @@ import { Organization } from './organization';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({
@@ -18,7 +20,7 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  private url = 'http://localhost:3000';
+  private url = environment.apiURL;
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url+'/users');
