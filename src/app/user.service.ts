@@ -23,15 +23,15 @@ export class UserService {
   private url = environment.apiURL;
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url+'/users');
+    return this.http.get<User[]>(this.url+'/usr/list');
   }
 
   getOrgs(): Observable<Organization[]> {
-    return this.http.get<Organization[]>(this.url+'/orgs');
+    return this.http.get<Organization[]>(this.url+'/org/list');
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.url+'/user/add', user);
+    return this.http.post<User>(this.url+'/usr/add', user);
   }
 }
 
