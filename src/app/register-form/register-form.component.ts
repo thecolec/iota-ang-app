@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 import { NewUser } from '../user';
 
@@ -9,7 +10,7 @@ import { NewUser } from '../user';
 })
 export class RegisterFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private iotaAuthAPI: AuthService) {}
 
   model = new NewUser("0", "", "", "", "")
 
@@ -20,6 +21,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   newUser() {
+    this.iotaAuthAPI.register(this.model);
   }
 
 }

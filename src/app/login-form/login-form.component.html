@@ -13,14 +13,17 @@
 
             <!-- Password -->
             <div class="mb-3">
-                <label for="new-user-lName" class="form-label">Password:</label>
-                <input type="text" id="new-user-lName" class="form-control" required
-                [(ngModel)]="model.lName" name="lName">
+                <label for="new-user-pWord" class="form-label">Password:</label>
+                <input type="text" id="new-user-pWord" class="form-control" required
+                [(ngModel)]="model.pWord" name="pWord">
             </div>
 
             <!-- Submit -->
             <button type="submit" class="btn btn-primary"
-            [disabled]="!createUser.form.valid" (click)="newUser(); createUser.reset()">Login</button>
+            [disabled]="!createUser.form.valid" 
+            (click)="newUser(); 
+            createUser.reset()"
+            routerLink="/dash">Login</button>
         </form>
     </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
-import { NewUser } from '../user';
+import { AuthUser } from '../user';
 
 @Component({
   selector: 'app-login-form',
@@ -9,9 +11,9 @@ import { NewUser } from '../user';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private iotaAuthAPI: AuthService) { }
 
-  model = new NewUser("0", "", "", "", "")
+  model = new AuthUser("", "")
 
   ngOnInit(): void {
   }
@@ -20,6 +22,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   newUser() {
+    return this.iotaAuthAPI.login(this.model);
   }
 
 }
