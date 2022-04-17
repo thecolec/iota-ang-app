@@ -47,6 +47,8 @@ export class AuthService {
   }
 
   checkLoginState(): boolean{
+
+    //TODO: Set login state using user doc presence
     var chk = localStorage.getItem('logged-in');
     if(chk == "1"){
       return true;
@@ -58,6 +60,10 @@ export class AuthService {
 
   get loginStateCheck(){
     return this.loginStateObs.asObservable();
+  }
+
+  usrDoc(): User {
+    return this.currentUser as User;
   }
   
 

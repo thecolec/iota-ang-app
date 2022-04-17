@@ -20,7 +20,9 @@ export class User {
         public _id: string,
         public uName: string,
         public fName: string,
-        public lName: string
+        public lName: string,
+        public rank: number,
+        public orgs: object
     ) { }
 }
 

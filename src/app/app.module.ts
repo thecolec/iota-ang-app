@@ -13,6 +13,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { OrgPageComponent } from './org-page/org-page.component';
+import { AuthpageComponent } from './authpage/authpage.component';
+import { RegpageComponent } from './regpage/regpage.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     CreateUserComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    OrgPageComponent,
+    AuthpageComponent,
+    RegpageComponent
   ],
   imports: [
     BrowserModule,
