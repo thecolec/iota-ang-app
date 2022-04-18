@@ -1,1 +1,24 @@
-<p>org-page works!</p>
+<div class="container-fluid">
+    <h1>{{ org.Name }}</h1>
+<div class="row">
+    <div class="col-md-4">
+        {{ org.byline || "A student organization"}}
+    </div>
+    <div class="col-md-4">
+        {{ getDate() }}
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <app-user-panel [users]="org.members"></app-user-panel>
+    </div>
+    <div class="col-md-4">
+        test
+    </div>
+    <div class="col-md-4">
+        test
+    </div>
+</div>
+<hr/>
+</div>

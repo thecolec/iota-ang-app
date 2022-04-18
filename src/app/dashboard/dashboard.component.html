@@ -1,24 +1,19 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 mb-3">
-            <app-user-panel></app-user-panel>
-        </div>
-        <div class="col-md-6 mb-3">
-            <app-org-panel></app-org-panel>
+        <div class="col mb-3">
+            <h1 class="text-center">Welcome, {{whoami.fName}} </h1>
+            <p class="lead text-center">You've got work to do.</p>              
         </div>
     </div>
     <div class="row">
+        <!-- <div class="col-md-6 mb-3">
+            <app-user-panel></app-user-panel>
+        </div> -->
         <div class="col-md-4 mb-3">
-            <!-- <app-create-user></app-create-user> -->
-            <app-create-user></app-create-user>
+            <app-org-panel [orgs]="whoami.orgs"></app-org-panel>
         </div>
-        <div class="col-md-4 mb-3">
-            <!-- <app-create-user></app-create-user> -->
-            <app-register-form></app-register-form>
-        </div>
-        <div class="col-md-4 mb-3">
-            <!-- <app-create-user></app-create-user> -->
-            <app-login-form></app-login-form>
-        </div>
+    </div>
+    <div class="row">
+        
     </div>
 </div>

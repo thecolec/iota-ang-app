@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-navbar',
@@ -15,17 +16,21 @@ export class NavbarComponent implements OnInit {
   }
   
   loginState$ : Observable<boolean>;
+  currUser$: Observable<User>;
   
 
-  title = "Iota";
+  title = "Iota (beta)";
+  Name = "";
 
   ngOnInit() {
     this.loginState$ = this.iotaAuth.loginStateCheck;
+    this.iotaAuth.userInfo.subscribe(user => this.Name = user.uName);
+    
   }
 
+
   logout(){
-    localStorage.setItem('logged-in', "0");
-    this.iotaAuth.loginStateObs.next(false);
+    this.iotaAuth.logout();
   }
 
 }

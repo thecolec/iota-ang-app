@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { OrgPageComponent } from './org-page/org-page.component';
 import { AuthpageComponent } from './authpage/authpage.component';
 import { RegpageComponent } from './regpage/regpage.component';
+import { UserbioComponent } from './userbio/userbio.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RegpageComponent } from './regpage/regpage.component';
     NavbarComponent,
     OrgPageComponent,
     AuthpageComponent,
-    RegpageComponent
+    RegpageComponent,
+    UserbioComponent
   ],
   imports: [
     BrowserModule,

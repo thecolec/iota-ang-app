@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Organization } from '../organization';
 
 import { UserService } from '../user.service';
@@ -10,16 +10,14 @@ import { UserService } from '../user.service';
 })
 export class OrgPanelComponent implements OnInit {
 
-  orgs: Organization[] = [];
+  @Input() orgs: Organization[];
 
   constructor(private iotaApi: UserService) { }
 
   ngOnInit(): void {
-    this.getOrgs();
+    // this.getOrgs();
   }
 
-  getOrgs(): void {
-    this.iotaApi.getOrgs().subscribe(orgs => this.orgs = orgs);
-  }
+  
 
 }

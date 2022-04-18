@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { User } from './user';
-import { Organization } from './organization';
+import { Organization, OrganizationVerbose } from './organization';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -35,7 +35,10 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.url+'/usr/add', user);
   }
-
+  getOrgSpec(oid: string): Observable<OrganizationVerbose> {
+    return this.http.get<OrganizationVerbose>(this.url+'/org/s/'+oid+'/full');
+  }
+  
 }
 
 

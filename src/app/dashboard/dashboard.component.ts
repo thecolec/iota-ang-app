@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Organization } from '../organization';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private iotaAuth: AuthService, private iotaApi: UserService) {
+  }
+
+  whoami: User;
 
   ngOnInit(): void {
+    this.iotaAuth.userInfo.subscribe(user => this.whoami = user);
   }
+
+  // ! Creates loop upon making get requrest. Create separate admin panel behind guard to fix.
+  // getOrgs(): Organization[] {
+  //   var orgs: Organization[];
+  //   if (this.whoami.rank === 3) {
+      
+  //     console.log("idiot");
+  //   }
+  //   orgs = this.whoami.orgs;    
+  //   return orgs;
+  // }
 
 }

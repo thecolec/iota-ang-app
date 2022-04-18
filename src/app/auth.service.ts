@@ -21,10 +21,13 @@ export class AuthService {
 
   private currentUser = {};
 
+  private jwtHelper = new JwtHelperService();
+
   // Async observable field exports
   public loginStateObs = new BehaviorSubject<boolean>(this.checkLoginState());
+  public userDoc = new BehaviorSubject<User>(this.readUserDoc());
 
-  private jwtHelper = new JwtHelperService();
+  
 
   constructor(private http: HttpClient,) { 
   }
@@ -32,16 +35,27 @@ export class AuthService {
 
   login(user: AuthUser) {
     return this.http.post(environment.apiURL+'/auth/login', user).subscribe((res: any) => {
-      this.currentUser = this.jwtHelper.decodeToken(res.token);
       console.log(this.jwtHelper.decodeToken(res.token));
       localStorage.setItem('logged-in', "1");
+      localStorage.setItem('token',res.token);
       this.loginStateObs.next(true);
+      this.userDoc.next(this.readUserDoc());
     });
+  }
+
+  logout(){
+    localStorage.setItem('logged-in', "0");
+    if(localStorage.getItem('token') !== null) {localStorage.removeItem('token')}
+    this.loginStateObs.next(false);
+    this.userDoc.next(this.readUserDoc());
   }
 
   register(user: NewUser){
     return this.http.post(environment.apiURL+'/auth/reg',user).subscribe((res: any) => {
-      this.currentUser = this.jwtHelper.decodeToken(res.token);
+      localStorage.setItem('logged-in', "1");
+      localStorage.setItem('token',res.token);
+      this.loginStateObs.next(true);
+      this.userDoc.next(this.readUserDoc());
       console.log(res);
     });
   }
@@ -58,15 +72,33 @@ export class AuthService {
     
   }
 
+  readUserDoc(): User{
+    
+    try {
+      if(localStorage.getItem('token') === null ){return new User("","","","",0,[]);}
+      //console.log(this.jwtHelper.decodeToken<User>(localStorage.getItem('token')|| '{}'));
+      return this.jwtHelper.decodeToken<User>(localStorage.getItem('token') || '{}');
+    } catch (error) {
+      console.log(error);
+      return new User("","","","",0,[]);
+    }
+  }
+
+  checkAdmin(): boolean{
+    var num;
+    this.userInfo.subscribe(doc => num = doc.rank);
+    return num === 3;
+  }
+
+  // GET's
+
   get loginStateCheck(){
     return this.loginStateObs.asObservable();
   }
 
-  usrDoc(): User {
-    return this.currentUser as User;
+  get userInfo(){
+    return this.userDoc.asObservable();
   }
-  
-
 
 
 }

@@ -12,7 +12,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private iotaAPI: UserService) { }
 
-  model = new User("0", "", "", "", 0, {});
+  model = new User("0", "", "", "", 0, []);
 
   ngOnInit(): void {
   }

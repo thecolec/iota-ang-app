@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { USERS } from "../mock-users";
 import { User } from '../user';
 
@@ -11,13 +11,13 @@ import { UserService } from '../user.service';
 })
 export class UserPanelComponent implements OnInit {
 
-  users: User[] = [];
+  @Input() users: User[];
 
   constructor(private userService: UserService) { 
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
   }
 
   getUsers(): void {

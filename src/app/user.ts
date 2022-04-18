@@ -1,10 +1,12 @@
+import { Organization } from "./organization";
+
 export interface User {
     _id: string;
     uName: string;
     fName: string;
     lName: string;
     rank: number;
-    orgs: object;
+    orgs: Organization[];
 }
 
 export interface NewUser {
@@ -22,7 +24,7 @@ export class User {
         public fName: string,
         public lName: string,
         public rank: number,
-        public orgs: object
+        public orgs: Organization[]
     ) { }
 }
 

@@ -41,7 +41,10 @@
     
             <!-- Submit -->
             <button type="submit" class="btn btn-primary"
-            [disabled]="!createUser.form.valid" (click)="newUser(); createUser.reset()">Register</button>
+            [disabled]="!createUser.form.valid" 
+            (click)="newUser(); 
+            createUser.reset()"
+            routerLink='/dash/'>Register</button>
         </form>
     </div>
 </div>
