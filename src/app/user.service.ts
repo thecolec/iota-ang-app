@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
+import { Minutes } from './minutes';
 
 
 
@@ -37,6 +38,19 @@ export class UserService {
   }
   getOrgSpec(oid: string): Observable<OrganizationVerbose> {
     return this.http.get<OrganizationVerbose>(this.url+'/org/s/'+oid+'/full');
+  }
+
+  getUserVerb(uid: string): Observable<User> {
+    return this.http.get<User>(this.url+'/usr/s/'+uid);
+  }
+
+  getMinutes(): Observable<Minutes[]> {
+    return this.http.get<Minutes[]>(this.url+'/min/');
+  }
+
+  isMe(user: User): boolean {
+    if(user._id === this.iotaAuth.readUserDoc()._id) return true;
+    return false;
   }
   
 }

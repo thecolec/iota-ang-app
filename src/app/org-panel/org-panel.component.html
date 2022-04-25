@@ -1,6 +1,7 @@
 <ul class="org-panel list-group">
     <li class="list-group-item active">Registered Organizations:</li>
-    <a *ngFor="let org of orgs" class="list-group-item d-flex justify-content-between align-items-center" routerLink="/org/{{org.oid || org._id}}">
+    <a *ngFor="let org of orgs" class="list-group-item d-flex justify-content-between align-items-center" 
+    routerLink="/org/{{org.oid || org._id}}">
         {{ org.Name }} 
         <span class="badge bg-primary rounded-pill">{{ org._id }}</span>
         <span class="badge bg-primary rounded-pill">{{ org.oid }}</span>

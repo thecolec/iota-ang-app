@@ -17,6 +17,8 @@ import { OrgPageComponent } from './org-page/org-page.component';
 import { AuthpageComponent } from './authpage/authpage.component';
 import { RegpageComponent } from './regpage/regpage.component';
 import { UserbioComponent } from './userbio/userbio.component';
+import { MinutesPanelComponent } from './minutes-panel/minutes-panel.component';
+import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UserbioComponent } from './userbio/userbio.component';
     OrgPageComponent,
     AuthpageComponent,
     RegpageComponent,
-    UserbioComponent
+    UserbioComponent,
+    MinutesPanelComponent,
+    MinuteEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,31 @@
 <div class="container-fluid">
     <h1>{{ org.Name }}</h1>
-<div class="row">
-    <div class="col-md-4">
-        {{ org.byline || "A student organization"}}
+    <div class="row">
+        <div class="col-md-4">
+            {{ org.byline || "A student organization"}}
+        </div>
+        <div class="col-md-4">
+            {{ getDate() }}
+        </div>
     </div>
-    <div class="col-md-4">
-        {{ getDate() }}
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <app-user-panel [users]="org.members"></app-user-panel>
+        </div>
+        <div class="col-md-4">
+            <app-minutes-panel></app-minutes-panel>
+        </div>
+        <div class="col-md-4">
+            <div>
+                Organization Functions
+                <br>
+                <button type="button" class="btn btn-success"
+                routerLink="/min/0/{{org._id}}">New minutes</button>
+                
+            </div>
+        </div>
     </div>
-</div>
-<hr/>
-<div class="row">
-    <div class="col-md-4">
-        <app-user-panel [users]="org.members"></app-user-panel>
-    </div>
-    <div class="col-md-4">
-        test
-    </div>
-    <div class="col-md-4">
-        test
-    </div>
-</div>
-<hr/>
+    <hr/>
+    <!-- Modals loaded by toggles -->
 </div>

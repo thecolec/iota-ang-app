@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { USERS } from "../mock-users";
 import { User } from '../user';
 
@@ -13,7 +14,7 @@ export class UserPanelComponent implements OnInit {
 
   @Input() users: User[];
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService, private iotaAuth: AuthService) { 
   }
 
   ngOnInit(): void {
@@ -22,6 +23,10 @@ export class UserPanelComponent implements OnInit {
 
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
+  }
+
+  isMe(user: User): boolean {
+    return this.userService.isMe(user);
   }
 
 }

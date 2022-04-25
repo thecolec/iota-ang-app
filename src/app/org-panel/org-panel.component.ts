@@ -17,7 +17,4 @@ export class OrgPanelComponent implements OnInit {
   ngOnInit(): void {
     // this.getOrgs();
   }
-
-  
-
 }
