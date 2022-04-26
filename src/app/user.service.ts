@@ -48,6 +48,11 @@ export class UserService {
     return this.http.get<Minutes[]>(this.url+'/min/');
   }
 
+  getMinutesSpec(id: string): Observable<Minutes> {
+    console.log(this.url+'/min/s/'+id);
+    return this.http.get<Minutes>(this.url+'/min/s/'+id);
+  }
+
   isMe(user: User): boolean {
     if(user._id === this.iotaAuth.readUserDoc()._id) return true;
     return false;

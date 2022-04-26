@@ -1,1 +1,24 @@
-<p>minute-editor works!</p>
+<div class="container">
+    <div *ngIf="getMode() === 1">
+        <h1> {{ this.document.title || this.document._id || "Invalid Document"}}</h1>
+        <h2> Created On: {{ this.document.createDate }}</h2>
+        <h3> Author: {{ this.document.creator.lName }}, {{ this.document.creator.fName }}</h3>
+    </div>
+    <div *ngIf="getMode() === 0">
+        <form #writeMinutes="ngForm">
+            <div class="input-group">
+                <span class="input-group-text">Title</span>
+                <input type="text" class="form-control" placeholder="Submission Title" required>
+            </div>
+            <div>
+                <label class="form-label">Contents</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" 
+                placeholder="Write your notes here..." rows="3"></textarea>
+            </div>
+            <button type="submit"
+            class="btn btn-success"
+            [disabled]="!writeMinutes.form.valid">Save</button>
+        </form>
+    </div>
+</div>
+
