@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUser, NewUser, User } from './user';
 
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -36,6 +37,7 @@ export class AuthService {
   login(user: AuthUser) {
     console.log(user);
     return this.http.post(environment.apiURL+'/auth/login', user).subscribe((res: any) => {
+      if(res.token.Error){this.logout(); return;}
       console.log(this.jwtHelper.decodeToken(res.token));
       localStorage.setItem('logged-in', "1");
       localStorage.setItem('token',res.token);
@@ -56,6 +58,16 @@ export class AuthService {
       console.log(user);
       localStorage.setItem('logged-in', "1");
       localStorage.setItem('token',res.token);
+      this.loginStateObs.next(true);
+      this.userDoc.next(this.readUserDoc());
+      console.log(res);
+    });
+  }
+
+  refresh() {
+    return this.http.get(environment.apiURL+'/auth/update').subscribe((res: any) => {
+      localStorage.setItem('logged-in', "1");
+      localStorage.setItem('token',res);
       this.loginStateObs.next(true);
       this.userDoc.next(this.readUserDoc());
       console.log(res);

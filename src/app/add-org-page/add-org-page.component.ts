@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from '../user.service';
 })
 export class AddOrgPageComponent implements OnInit {
 
-  constructor(private iotaAPI: UserService) { }
+  constructor(private iotaAPI: UserService, private iotaAuth: AuthService) { }
 
   regCode: string;
 
@@ -17,6 +18,7 @@ export class AddOrgPageComponent implements OnInit {
 
   joinOrg(): void {
     this.iotaAPI.joinOrg(this.regCode);
+    
   }
 
 }

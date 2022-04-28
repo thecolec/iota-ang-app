@@ -27,7 +27,8 @@
                         class="btn btn-success"
                         [disabled]="!writeMinutes.form.valid"
                         (click)="submitMinutes(); 
-                        writeMinutes.reset();"> Save 
+                        writeMinutes.reset();"
+                        routerLink="/org/{{ this.id }}"> Save 
                 </button>
             </div>
         </form>

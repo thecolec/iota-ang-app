@@ -24,7 +24,7 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Logout -->
                 <li class="nav-item" *ngIf="loginState$ | async">
-                    <a class="nav-link" (click)="logout();" routerLink="/dash">Logout</a>
+                    <a class="nav-link" (click)="logout();" routerLink="/">Logout</a>
                 </li>
                 <li class="nav-item" *ngIf="!(loginState$ | async)">
                     <a class="nav-link" routerLink="/register">Register</a>

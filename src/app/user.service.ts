@@ -60,6 +60,7 @@ export class UserService {
   joinOrg(regcode: string): void {
     this.http.post(this.url+'/org/reg/'+regcode, {}).subscribe((res: any) => {
       console.log(res);
+      this.iotaAuth.refresh();
     })
   }
 

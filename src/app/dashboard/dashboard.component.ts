@@ -20,5 +20,9 @@ export class DashboardComponent implements OnInit {
     this.iotaAuth.userInfo.subscribe(user => this.whoami = user);
   }
 
+  triggerRefresh() {
+    this.iotaAuth.refresh();
+  }
+
 
 }

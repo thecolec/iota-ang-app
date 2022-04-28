@@ -20,7 +20,7 @@ export class MinuteEditorComponent implements OnInit {
   }
 
   private mode: number = 0;
-  private id: string;
+  public id: string;
   public document: Minutes;
 
   ngOnInit(): void {

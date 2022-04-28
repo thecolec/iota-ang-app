@@ -21,6 +21,7 @@ import { MinutesPanelComponent } from './minutes-panel/minutes-panel.component';
 import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
 import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
 import { AddOrgPageComponent } from './add-org-page/add-org-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddOrgPageComponent } from './add-org-page/add-org-page.component';
     UserbioComponent,
     MinutesPanelComponent,
     MinuteEditorComponent,
-    AddOrgPageComponent
+    AddOrgPageComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
