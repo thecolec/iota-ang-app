@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -19,6 +19,8 @@ import { RegpageComponent } from './regpage/regpage.component';
 import { UserbioComponent } from './userbio/userbio.component';
 import { MinutesPanelComponent } from './minutes-panel/minutes-panel.component';
 import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
+import { TokenInterceptorInterceptor } from './token-interceptor.interceptor';
+import { AddOrgPageComponent } from './add-org-page/add-org-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
     RegpageComponent,
     UserbioComponent,
     MinutesPanelComponent,
-    MinuteEditorComponent
+    MinuteEditorComponent,
+    AddOrgPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,13 @@ import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

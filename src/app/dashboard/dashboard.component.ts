@@ -20,15 +20,5 @@ export class DashboardComponent implements OnInit {
     this.iotaAuth.userInfo.subscribe(user => this.whoami = user);
   }
 
-  // ! Creates loop upon making get requrest. Create separate admin panel behind guard to fix.
-  // getOrgs(): Organization[] {
-  //   var orgs: Organization[];
-  //   if (this.whoami.rank === 3) {
-      
-  //     console.log("idiot");
-  //   }
-  //   orgs = this.whoami.orgs;    
-  //   return orgs;
-  // }
 
 }

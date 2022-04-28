@@ -7,6 +7,7 @@ import { RegpageComponent } from './regpage/regpage.component';
 import { OrgPageComponent } from './org-page/org-page.component';
 import { UserbioComponent } from './userbio/userbio.component';
 import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
+import { AddOrgPageComponent } from './add-org-page/add-org-page.component';
 
 const routes: Routes = [
   { path: 'users', component: UserPanelComponent},
@@ -14,8 +15,9 @@ const routes: Routes = [
   { path: 'dash', component: DashboardComponent},
   { path: 'login', component: AuthpageComponent},
   { path: 'register', component: RegpageComponent},
-  { path: 'usr/:uid', component: UserbioComponent},
-  { path: 'min/:mode/:id', component: MinuteEditorComponent}
+  { path: 'usr/:mode/:uid', component: UserbioComponent},
+  { path: 'min/:mode/:id', component: MinuteEditorComponent},
+  { path: 'register/join', component: AddOrgPageComponent}
 ];
 
 @NgModule({

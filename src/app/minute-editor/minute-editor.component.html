@@ -1,23 +1,32 @@
 <div class="container">
-    <div *ngIf="getMode() === 1">
+    <div *ngIf="getMode() === 1 && this.document">
         <h1> {{ this.document.title || this.document._id || "Invalid Document"}}</h1>
-        <h2> Created On: {{ this.document.createDate }}</h2>
-        <h3> Author: {{ this.document.creator.lName }}, {{ this.document.creator.fName }}</h3>
+        <h5> Created: {{ getDate() }}</h5>
+        <h5> Author: {{ this.document.creator.lName }}, {{ this.document.creator.fName }}</h5>
+        <p> {{ this.document.contents || "Missing Contents" }} </p>
     </div>
-    <div *ngIf="getMode() === 0">
-        <form #writeMinutes="ngForm">
-            <div class="input-group">
+    <div *ngIf="getMode() === 0 && this.document">
+        <form (ngSubmit)="onSubmit()" #writeMinutes="ngForm">
+            <div class="input-group mb-3">
                 <span class="input-group-text">Title</span>
-                <input type="text" class="form-control" placeholder="Submission Title" required>
+                <input type="text" class="form-control" placeholder="Submission Title" required
+                id="docTitle" 
+                [(ngModel)]="document.title" name="title" #name="ngModel"> 
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contents</label>
+                <textarea type="text" class="form-control" placeholder="Write your notes here..." required 
+                id="docContents" rows="5" 
+                [(ngModel)]="document.contents" name="contents" #contents="ngModel"></textarea>
             </div>
             <div>
-                <label class="form-label">Contents</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" 
-                placeholder="Write your notes here..." rows="3"></textarea>
+                <button type="submit"
+                        class="btn btn-success"
+                        [disabled]="!writeMinutes.form.valid"
+                        (click)="submitMinutes(); 
+                        writeMinutes.reset();"> Save 
+                </button>
             </div>
-            <button type="submit"
-            class="btn btn-success"
-            [disabled]="!writeMinutes.form.valid">Save</button>
         </form>
     </div>
 </div>

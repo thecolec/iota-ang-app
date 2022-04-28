@@ -17,6 +17,16 @@ export interface NewUser {
     pWord: string
 }
 
+export interface VerboseUser {
+    _id: string;
+    uName: string;
+    fName: string;
+    lName: string;
+    rank: number;
+    orgs: Organization[];
+    bio: string;
+}
+
 export class User {
     constructor(
         public _id: string,

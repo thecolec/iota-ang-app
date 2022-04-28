@@ -12,6 +12,16 @@
         <div class="col-md-4 mb-3">
             <app-org-panel [orgs]="whoami.orgs"></app-org-panel>
         </div>
+        <div class="col-md-4 mb-3">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-success"
+                routerLink="/register/join">Add Organization</button>
+
+                <button type="button" class="btn btn-primary"
+                routerLink="/usr/1/{{ whoami._id }}">Edit Account</button>
+            </div>
+            
+        </div>
     </div>
     <div class="row">
         

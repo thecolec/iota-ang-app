@@ -7,6 +7,7 @@ export interface Minutes {
     oid: string;
     creator: User;
     title: string;
+    contents: string;
 }
 
 export class MinutesObj {
@@ -16,6 +17,7 @@ export class MinutesObj {
         public modDate: string,
         public oid: string,
         public creator: User,
-        public title: string
+        public title: string,
+        public contents: string
     ){ }
 }

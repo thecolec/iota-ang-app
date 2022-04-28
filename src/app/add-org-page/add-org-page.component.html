@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                
+                <div class="card-body">
+                    <h3 class="card-title">
+                        Let's Go!
+                    </h3>
+                    <p> You're on the way to joining a new organization. Enter your 6 digit registration code below to get started!</p>
+                    <form #regCodeJoin="ngForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">RegCode</span>
+                            <input type="text" class="form-control" placeholder="000000" required
+                            id="docTitle" 
+                            [(ngModel)]="regCode" name="title" #name="ngModel"> 
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn btn-success"
+                                    [disabled]="!regCodeJoin.form.valid"
+                                    (click)="joinOrg(); 
+                                    regCodeJoin.reset();"> Join 
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    
+</div>

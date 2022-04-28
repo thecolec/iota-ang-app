@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -12,13 +13,15 @@ import { UserService } from '../user.service';
 })
 export class MinuteEditorComponent implements OnInit {
 
-  private mode: number = 0;
-  private id: string;
-  public document: Minutes;
+  
 
   constructor(private iotaAPI: UserService, private iotaAuth: AuthService, private route: ActivatedRoute) { 
     
   }
+
+  private mode: number = 0;
+  private id: string;
+  public document: Minutes;
 
   ngOnInit(): void {
     this.mode = Number(this.route.snapshot.paramMap.get('mode'));
@@ -27,7 +30,12 @@ export class MinuteEditorComponent implements OnInit {
   }
 
   loadMinuteSpec(): void {
-    this.iotaAPI.getMinutesSpec(this.id).subscribe(doc => this.document = doc);
+    if(this.mode === 1) {
+      this.iotaAPI.getMinutesSpec(this.id).subscribe(doc => this.document = doc);
+    }
+    if(this.mode === 0) {
+      this.document = this.genTemplate();
+    }
   }
 
   getMode(): number {
@@ -36,8 +44,21 @@ export class MinuteEditorComponent implements OnInit {
 
   genTemplate() : Minutes {
     const usrDoc: User = this.iotaAuth.readUserDoc();
-    const doc = new MinutesObj("","","","",usrDoc,"");
+    const doc = new MinutesObj("","","",this.id,usrDoc,"" ,"");
     return doc;
+  }
+
+  getDate(): string {
+    const datePipe = new DatePipe('en-US');
+    const date = datePipe.transform(this.document.createDate, 'MM/dd/yy h:mm a');
+    return date || "";
+  }
+
+  onSubmit() {}
+
+  submitMinutes() {
+    this.iotaAPI.putMinutes(this.document);
+    console.log(this.document);
   }
 
 }

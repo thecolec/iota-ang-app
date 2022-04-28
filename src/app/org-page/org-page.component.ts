@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { min } from 'rxjs';
@@ -14,25 +15,43 @@ import { UserService } from '../user.service';
 })
 export class OrgPageComponent implements OnInit {
 
-  constructor(private iotaUser: UserService, private route: ActivatedRoute, private iotaAuth: AuthService) { }
+  constructor(private iotaAPI: UserService, private route: ActivatedRoute, private iotaAuth: AuthService) {
+    
+   }
   
   org: OrganizationVerbose;
+  regCode: string;
   
 
   ngOnInit(): void {
-    const uid = this.route.snapshot.paramMap.get('uid');
-    this.getOrgDetails(uid || "");
+    const oid = this.route.snapshot.paramMap.get('uid');
+    this.getOrgDetails(oid || "");
+    this.getRegCode(oid || "");
+    
   }
 
-  getOrgDetails(uid: string): void {
-    this.iotaUser.getOrgSpec(uid).subscribe(doc => this.org = doc);
+  getOrgDetails(oid: string): void {
+    this.iotaAPI.getOrgSpec(oid).subscribe(doc => this.org = doc);
   }
 
   getDate(): string {
-    return this.org.created;
+    const datePipe = new DatePipe('en-US');
+    const date = datePipe.transform(this.org.created, 'MM/dd/yy');
+    return date || "";
   }
+  
   getOID(): string {
     return this.route.snapshot.paramMap.get('uid') || "";
+  }
+
+  getName(): string {
+    return this.org.Name || "Unnamed Org";
+  }
+
+  
+
+  getRegCode(oid: string): void {
+    this.iotaAPI.getRegCode(oid).subscribe(res => this.regCode = res);
   }
 
   // Groundwork for dynamic form

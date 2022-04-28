@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../user';
+import { VerboseUser } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,9 +8,12 @@ import { UserService } from '../user.service';
   templateUrl: './userbio.component.html',
   styleUrls: ['./userbio.component.sass']
 })
+
 export class UserbioComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() user: VerboseUser;
+
+  private mode: number = 0;
   
   constructor(
     private iotaUser: UserService,
@@ -18,12 +21,17 @@ export class UserbioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mode = Number(this.route.snapshot.paramMap.get('mode'));
     const uid = this.route.snapshot.paramMap.get('uid');
     this.getUserInfo(uid || "");
   }
 
   getUserInfo(uid: string): void {
     this.iotaUser.getUserVerb(uid).subscribe(doc => this.user = doc);
+  }
+
+  getMode(): number {
+    return this.mode;
   }
 
 }

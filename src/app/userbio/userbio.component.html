@@ -1,1 +1,38 @@
-<h1 class="card-title">{{ user.fName }}</h1>
+<div class="container">
+    <!-- View Mode -->
+    <div *ngIf="getMode() === 0">
+        <h1 class="card-title">{{ user.fName }} {{ user.lName }}</h1>
+        <h3> Iota user since: DATE</h3>
+    </div>
+    
+    <!-- Edit Mode -->
+    <div *ngIf="getMode() === 1">
+        <form>
+            <h1>User Info</h1>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <label for="input-fName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="input-fName" placeholder="John" value="{{ user.fName }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="input-lName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="input-lName" placeholder="Cena" value="{{ user.lName }}">
+                </div>
+                <div class="col-md-8">
+                    <label class="form-label">About Me</label>
+                    <textarea type="text" class="form-control" placeholder="Talk about yourself a little..." required 
+                    id="docContents" rows="5" 
+                    ></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit"
+                            class="btn btn-success"
+                            > Update 
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+
+</div>
