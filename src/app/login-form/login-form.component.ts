@@ -13,7 +13,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private iotaAuthAPI: AuthService) { }
 
-  model = new AuthUser("", "")
+  model = new AuthUser("", "");
 
   ngOnInit(): void {
   }

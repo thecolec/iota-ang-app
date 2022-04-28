@@ -34,6 +34,7 @@ export class AuthService {
 
 
   login(user: AuthUser) {
+    console.log(user);
     return this.http.post(environment.apiURL+'/auth/login', user).subscribe((res: any) => {
       console.log(this.jwtHelper.decodeToken(res.token));
       localStorage.setItem('logged-in', "1");
@@ -52,6 +53,7 @@ export class AuthService {
 
   register(user: NewUser){
     return this.http.post(environment.apiURL+'/auth/reg',user).subscribe((res: any) => {
+      console.log(user);
       localStorage.setItem('logged-in', "1");
       localStorage.setItem('token',res.token);
       this.loginStateObs.next(true);
@@ -80,6 +82,7 @@ export class AuthService {
       return this.jwtHelper.decodeToken<User>(localStorage.getItem('token') || '{}');
     } catch (error) {
       console.log(error);
+      console.log(localStorage.getItem('token'));
       return new User("","","","",0,[]);
     }
   }

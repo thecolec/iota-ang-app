@@ -2,14 +2,12 @@
     <h1>{{ getName() }}</h1>
     <div class="row gy-2">
         <div class="col-md-4">
-            {{ org.byline || "A student organization"}}
+            <p>{{ org.byline || "A student organization"}}</p>
         </div>
         <div class="col-md-4">
-            {{ getDate() }}
+            <p>Registered: {{ getDate() }}</p>
         </div>
-        <div class="col-md-4">
-            {{ regCode }}
-        </div>
+        
     </div>
     <hr/>
     <div class="row gy-2">
@@ -24,6 +22,16 @@
                 <button type="button" class="btn btn-success"
                 routerLink="/min/0/{{org._id}}">New minutes</button>
                 
+            </div>
+        </div>
+        <div class="col-md-2 gy-2">
+            <div class="card regCode-card">
+                <div class="card-header regCode-head">
+                    Join Code:
+                </div>
+                <div class="card-body regCode-body ">
+                    <h1>{{ regCode }}</h1>
+                </div>
             </div>
         </div>
     </div>

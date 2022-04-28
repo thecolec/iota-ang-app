@@ -6,6 +6,9 @@
         <p> {{ this.document.contents || "Missing Contents" }} </p>
     </div>
     <div *ngIf="getMode() === 0 && this.document">
+        <div>
+            <h1>New Report</h1>
+        </div>
         <form (ngSubmit)="onSubmit()" #writeMinutes="ngForm">
             <div class="input-group mb-3">
                 <span class="input-group-text">Title</span>

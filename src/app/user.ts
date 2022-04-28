@@ -17,6 +17,11 @@ export interface NewUser {
     pWord: string
 }
 
+export interface AuthUser {
+    uName: string,
+    pWord: string
+}
+
 export interface VerboseUser {
     _id: string;
     uName: string;
@@ -25,6 +30,7 @@ export interface VerboseUser {
     rank: number;
     orgs: Organization[];
     bio: string;
+    joindate: string;
 }
 
 export class User {

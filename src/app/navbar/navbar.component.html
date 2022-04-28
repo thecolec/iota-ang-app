@@ -7,6 +7,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <!-- Dashboard -->
+                <li class="nav-item" *ngIf="loginState$ | async">
+                    <a class="nav-link" routerLink="/dash">Dashboard</a>
+                </li>
                 <!-- Users Tab -->
                 <!-- <li class="nav-item">
                     <a class="nav-link" routerLink="/users">Users</a>

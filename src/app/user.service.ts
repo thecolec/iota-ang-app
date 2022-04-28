@@ -38,6 +38,12 @@ export class UserService {
     return this.http.get<VerboseUser>(this.url+'/usr/s/'+uid);
   }
 
+  setUserInfo(user: VerboseUser): void {
+    this.http.post(this.url+'/usr/edit/'+user._id, user).subscribe((res: any) => {
+      console.log(res);
+    })
+  }
+
   // Organization Functions
   getOrgs(): Observable<Organization[]> {
     return this.http.get<Organization[]>(this.url+'/org/list');

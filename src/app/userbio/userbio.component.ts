@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VerboseUser } from '../user';
@@ -30,8 +31,20 @@ export class UserbioComponent implements OnInit {
     this.iotaUser.getUserVerb(uid).subscribe(doc => this.user = doc);
   }
 
+  getDate(): string {
+    const datePipe = new DatePipe('en-US');
+    const date = datePipe.transform(this.user.joindate, 'MM/dd/yy');
+    return date || "";
+  } 
+
   getMode(): number {
     return this.mode;
+  }
+
+  // Writing Functions
+
+  setUserInfo(): void {
+    this.iotaUser.setUserInfo(this.user);
   }
 
 }

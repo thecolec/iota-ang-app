@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-org-page',
   templateUrl: './org-page.component.html',
-  styleUrls: ['./org-page.component.sass']
+  styleUrls: ['./org-page.component.scss']
 })
 export class OrgPageComponent implements OnInit {
 

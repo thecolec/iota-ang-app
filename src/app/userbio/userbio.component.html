@@ -2,31 +2,40 @@
     <!-- View Mode -->
     <div *ngIf="getMode() === 0">
         <h1 class="card-title">{{ user.fName }} {{ user.lName }}</h1>
-        <h3> Iota user since: DATE</h3>
+        <h3> Iota user since: {{ getDate() }}</h3>
+        <h5>About:</h5>
+        <p> {{ user.bio || "No bio yet" }} </p>
     </div>
     
     <!-- Edit Mode -->
     <div *ngIf="getMode() === 1">
-        <form>
+        <form #bioUpdate="ngForm">
             <h1>User Info</h1>
             <div class="row g-2">
                 <div class="col-md-4">
                     <label for="input-fName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="input-fName" placeholder="John" value="{{ user.fName }}">
+                    <input type="text" class="form-control" id="input-fName" 
+                    placeholder="John" value="{{ user.fName }}"
+                    [(ngModel)]="user.fName" name="fName" #fName="ngModel">
                 </div>
                 <div class="col-md-4">
                     <label for="input-lName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="input-lName" placeholder="Cena" value="{{ user.lName }}">
+                    <input type="text" class="form-control" id="input-lName" 
+                    placeholder="Cena" value="{{ user.lName }}"
+                    [(ngModel)]="user.lName" name="lName" #lName="ngModel">
                 </div>
                 <div class="col-md-8">
                     <label class="form-label">About Me</label>
                     <textarea type="text" class="form-control" placeholder="Talk about yourself a little..." required 
-                    id="docContents" rows="5" 
+                    id="docContents" rows="5"
+                    [(ngModel)]="user.bio" name="bio" #bio="ngModel"
                     ></textarea>
                 </div>
                 <div class="col-12">
                     <button type="submit"
                             class="btn btn-success"
+                            [disabled]="!bioUpdate.form.valid"
+                            (click)="setUserInfo();"
                             > Update 
                     </button>
                 </div>
