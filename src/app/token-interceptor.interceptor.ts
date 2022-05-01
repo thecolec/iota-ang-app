@@ -17,6 +17,7 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
     const authToken = localStorage.getItem('token');
     // Check if token is present
     if (authToken) {
+      // Append the token to the outgoing request.
       request = request.clone({
         setHeaders: {
           'x-access-token': authToken

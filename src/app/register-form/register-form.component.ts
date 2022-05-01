@@ -12,6 +12,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(private iotaAuthAPI: AuthService) {}
 
+  // Create new model to bind to form
   model = new NewUser("0", "", "", "", "")
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class RegisterFormComponent implements OnInit {
   onSubmit() {
   }
 
+  // submit filled model to AuthService for API post.
   newUser() {
     this.iotaAuthAPI.register(this.model);
   }

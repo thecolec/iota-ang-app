@@ -1,5 +1,5 @@
 <div class="container">
-    <!-- View Mode -->
+    <!-- View Mode - Displays when Mode = 0 -->
     <div *ngIf="getMode() === 0">
         <h1 class="card-title">{{ user.fName }} {{ user.lName }}</h1>
         <h3> Iota user since: {{ getDate() }}</h3>
@@ -7,23 +7,26 @@
         <p> {{ user.bio || "No bio yet" }} </p>
     </div>
     
-    <!-- Edit Mode -->
+    <!-- Edit Mode - Displays when Mode = 1 -->
     <div *ngIf="getMode() === 1">
         <form #bioUpdate="ngForm">
             <h1>User Info</h1>
             <div class="row g-2">
+                <!-- First Name - Bound to user.fName -->
                 <div class="col-md-4">
                     <label for="input-fName" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="input-fName" 
                     placeholder="John" value="{{ user.fName }}"
                     [(ngModel)]="user.fName" name="fName" #fName="ngModel">
                 </div>
+                <!-- Last Name - Bound to user.lName -->
                 <div class="col-md-4">
                     <label for="input-lName" class="form-label">Last Name</label>
                     <input type="text" class="form-control" id="input-lName" 
                     placeholder="Cena" value="{{ user.lName }}"
                     [(ngModel)]="user.lName" name="lName" #lName="ngModel">
                 </div>
+                <!-- Bio - Bound to user.Bio -->
                 <div class="col-md-8">
                     <label class="form-label">About Me</label>
                     <textarea type="text" class="form-control" placeholder="Talk about yourself a little..." required 
@@ -31,6 +34,7 @@
                     [(ngModel)]="user.bio" name="bio" #bio="ngModel"
                     ></textarea>
                 </div>
+                <!-- Submit - uses setUserInfo() to submit via UserService. Returns user to Dash -->
                 <div class="col-12">
                     <button type="submit"
                             class="btn btn-success"

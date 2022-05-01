@@ -1,5 +1,6 @@
 import { User } from "./user";
 
+// Defintes minutes object type interface and class constructor.
 export interface Minutes {
     _id: string;
     createDate: string;

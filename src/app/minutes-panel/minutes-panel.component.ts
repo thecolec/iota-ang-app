@@ -15,12 +15,16 @@ export class MinutesPanelComponent implements OnInit {
 
   constructor(private iotaApi: UserService, private route: ActivatedRoute) { }
 
+  // On init
   ngOnInit(): void {
+    // load oid from URL parameters.
     const oid = this.route.snapshot.paramMap.get('uid') || "";
+    // retrieve list of minute fo the provided OID
     this.getMinutes(oid);
   }
 
   getMinutes(oid: string): void {
+    // Use UserService to retrieve minutes list.
     this.iotaApi.getMinutes(oid).subscribe(doc => this.minutes = doc);
   }
 

@@ -1,5 +1,6 @@
 import { User } from "./user";
 
+// Defines organization and organization verbose interfaces.
 export interface Organization{
     _id: number;
     Name: string;

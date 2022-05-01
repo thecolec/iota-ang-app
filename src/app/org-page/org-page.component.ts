@@ -24,47 +24,39 @@ export class OrgPageComponent implements OnInit {
   
 
   ngOnInit(): void {
+    // Set OID from route parameter
     const oid = this.route.snapshot.paramMap.get('uid');
+    
+    // retrieve regcode and verbose org doc if oid is provided.
     this.getOrgDetails(oid || "");
     this.getRegCode(oid || "");
     
   }
 
+  // Subscribes to verbose organization document using UserService
   getOrgDetails(oid: string): void {
     this.iotaAPI.getOrgSpec(oid).subscribe(doc => this.org = doc);
   }
 
+  // Returns human readable date.
   getDate(): string {
     const datePipe = new DatePipe('en-US');
     const date = datePipe.transform(this.org.created, 'MM/dd/yy');
     return date || "";
   }
   
+  // Returns organization ID, and "" if there is an error.
   getOID(): string {
     return this.route.snapshot.paramMap.get('uid') || "";
   }
 
+  // Returns organization Name, and "Unnamed Org" if there is an error.
   getName(): string {
     return this.org.Name || "Unnamed Org";
   }
 
-  
-
+  // User UserService to retrieve most recent Registration Code
   getRegCode(oid: string): void {
     this.iotaAPI.getRegCode(oid).subscribe(res => this.regCode = res);
   }
-
-  // Groundwork for dynamic form
-  // genTemplate() : Minutes {
-  //   const usrDoc: User = this.iotaAuth.readUserDoc();
-  //   const doc = new MinutesObj(
-  //     "",
-  //     "",
-  //     "",
-  //     "",
-  //     usrDoc
-  //   );
-  //   return doc;
-  // }
-
 }

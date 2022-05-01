@@ -1,35 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="/dash">{{ title }}</a>
-        <!-- <a class="navbar-brand" routerLink="/dash" *ngIf="(loginState$ | async)"> {{ Name }} </a> -->
+        <!-- bootstrap menu button. Only appears on mobile devices -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <!-- Dashboard -->
+                <!-- Dashboard - Only displayed when logged in. -->
                 <li class="nav-item" *ngIf="loginState$ | async">
                     <a class="nav-link" routerLink="/dash">Dashboard</a>
                 </li>
-                <!-- Users Tab -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" routerLink="/users">Users</a>
-                </li> -->
-                <!-- Organization Tab -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" routerLink="/orgs">Orgs</a>
-                </li> -->
-                <!-- Auth Buttons -->
             </ul>
             <ul class="navbar-nav ms-auto">
-                <!-- Logout -->
+                <!-- Logout - Only displayed when logged in. -->
                 <li class="nav-item" *ngIf="loginState$ | async">
                     <a class="nav-link" (click)="logout();" routerLink="/">Logout</a>
                 </li>
+                <!-- Register - Only displayed when logged out. -->
                 <li class="nav-item" *ngIf="!(loginState$ | async)">
                     <a class="nav-link" routerLink="/register">Register</a>
                 </li>
-                <!-- Login -->
+                <!-- Login - Only displayed when logged out. -->
                 <li class="nav-item"  *ngIf="!(loginState$ | async)">
                     <button class="btn btn-primary" type="login" routerLink="/login">Login</button>
                 </li>

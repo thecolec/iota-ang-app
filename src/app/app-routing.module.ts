@@ -10,6 +10,8 @@ import { MinuteEditorComponent } from './minute-editor/minute-editor.component';
 import { AddOrgPageComponent } from './add-org-page/add-org-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
+// Define client-facing routes.
+// Example iotaengine.org/login
 const routes: Routes = [
   { path: 'users', component: UserPanelComponent},
   { path: 'org/:uid', component: OrgPageComponent},

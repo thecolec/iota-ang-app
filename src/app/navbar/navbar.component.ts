@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
     
   }
   
+  // Create observable variables for the navbar template to subscribe to.
   loginState$ : Observable<boolean>;
   currUser$: Observable<User>;
   
@@ -23,12 +24,15 @@ export class NavbarComponent implements OnInit {
   Name = "";
 
   ngOnInit() {
+    // Subscribe to the loginState provided via AuthService
     this.loginState$ = this.iotaAuth.loginStateCheck;
+
+    // Subscribe to the user document via AuthService and assign username to Name field.
     this.iotaAuth.userInfo.subscribe(user => this.Name = user.uName);
     
   }
 
-
+  // Use logout method provided by AuthService when user clicks logout button.
   logout(){
     this.iotaAuth.logout();
   }

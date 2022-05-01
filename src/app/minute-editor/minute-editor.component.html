@@ -1,14 +1,26 @@
 <div class="container">
+    <!-- If the mode is 1 render viewer div -->
     <div *ngIf="getMode() === 1 && this.document">
+
+        <!-- Display document title, if title is empty display the ID, if ID is empty display error msg. -->
         <h1> {{ this.document.title || this.document._id || "Invalid Document"}}</h1>
+        
+        <!-- Call function to display rendered date -->
         <h5> Created: {{ getDate() }}</h5>
+
+        <!-- display creator first and last name -->
         <h5> Author: {{ this.document.creator.lName }}, {{ this.document.creator.fName }}</h5>
+
+        <!-- Display contents if available, otherwise display error. -->
         <p> {{ this.document.contents || "Missing Contents" }} </p>
     </div>
+
+    <!-- If the mode is 0 render the editor div and form -->
     <div *ngIf="getMode() === 0 && this.document">
         <div>
             <h1>New Report</h1>
         </div>
+        <!-- Minute editor form -->
         <form (ngSubmit)="onSubmit()" #writeMinutes="ngForm">
             <div class="input-group mb-3">
                 <span class="input-group-text">Title</span>
@@ -23,6 +35,7 @@
                 [(ngModel)]="document.contents" name="contents" #contents="ngModel"></textarea>
             </div>
             <div>
+                <!-- Trigger submission function and return to parent ORG page -->
                 <button type="submit"
                         class="btn btn-success"
                         [disabled]="!writeMinutes.form.valid"

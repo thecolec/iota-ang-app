@@ -1,5 +1,5 @@
 import { Organization } from "./organization";
-
+// Defines various user type formats used throughout the application
 export interface User {
     _id: string;
     uName: string;
@@ -33,6 +33,7 @@ export interface VerboseUser {
     joindate: string;
 }
 
+// defines user clases for easily generating new users of specific types.
 export class User {
     constructor(
         public _id: string,

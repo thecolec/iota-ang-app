@@ -10,11 +10,12 @@ import { UserService } from '../user.service';
 })
 export class OrgPanelComponent implements OnInit {
 
+  // Provide input field for organizations array
   @Input() orgs: Organization[];
 
   constructor(private iotaApi: UserService) { }
 
   ngOnInit(): void {
-    // this.getOrgs();
+
   }
 }

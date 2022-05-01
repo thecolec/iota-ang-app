@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { OrgPanelComponent } from './org-panel/org-panel.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,7 +28,6 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     UserPanelComponent,
     OrgPanelComponent,
     DashboardComponent,
-    CreateUserComponent,
     LoginFormComponent,
     RegisterFormComponent,
     NavbarComponent,

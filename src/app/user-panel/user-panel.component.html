@@ -1,9 +1,10 @@
 <ul class="user-panel list-group">
     <li class="list-group-item active">Members:</li>
+    <!-- for each user in users[] display the template element <a> -->
     <a *ngFor="let user of users" class="list-group-item d-flex justify-content-between align-items-center"
     routerLink="/usr/0/{{user._id}}">
         {{user.lName}}, {{user.fName}}
-        <!-- <span class="badge bg-primary rounded-pill">{{ user._id }}</span> -->
+        <!-- use isMe to determine if uid of list item matches current user. If so, display "Me" indicator-->
         <span class="badge bg-warning rounded-pill" *ngIf="isMe(user)"> Me </span>
     </a>
 </ul>

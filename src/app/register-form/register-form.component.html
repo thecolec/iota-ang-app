@@ -2,7 +2,7 @@
     <div class="card-body">
         <form (ngSubmit)="onSubmit()" #createUser="ngForm">
             <h5 class="card-title">Register</h5>
-            <!-- UserName -->
+            <!-- UserName - Is bound to the uName parameter of the model-->
             <div class="mb-3">
                 <label for="new-user-uName" class="form-label">Username:</label>
                 <input type="text" id="new-user-uName" class="form-control" required
@@ -11,35 +11,28 @@
                 <div id="userNameHelp" class="form-text">Must be unique. Will be used to sign-in.</div>
             </div>
     
-            <!-- First Name -->
+            <!-- First Name - Bound to the fName parameter of the model-->
             <div class="mb-3">
                 <label for="new-user-fName" class="form-label">First Name:</label>
                 <input type="text" id="new-user-fName" class="form-control" required
                 [(ngModel)]="model.fName" name="fName">
             </div>
     
-            <!-- Last Name -->
+            <!-- Last Name - Bound to the lName parameter of the model-->
             <div class="mb-3">
                 <label for="new-user-lName" class="form-label">Last Name:</label>
                 <input type="text" id="new-user-lName" class="form-control" required
                 [(ngModel)]="model.lName" name="lName">
             </div>
 
-            <!-- Password -->
+            <!-- Password - Bound to the pWord parameter of the model-->
             <div class="mb-3">
                 <label for="new-user-pWord" class="form-label">Password:</label>
                 <input type="text" id="new-user-pWord" class="form-control" required
                 [(ngModel)]="model.pWord" name="pWord">
             </div>
-
-            <!-- Validate Password -->
-            <!-- <div class="mb-3">
-                <label for="new-user-lName" class="form-label">Validate Password:</label>
-                <input type="text" id="new-user-lName" class="form-control" required
-                [(ngModel)]="model.lName" name="lName">
-            </div> -->
     
-            <!-- Submit -->
+            <!-- Submit - Uses newUser() to submit using AuthService. Routes new user to their dashboard.-->
             <button type="submit" class="btn btn-primary"
             [disabled]="!createUser.form.valid" 
             (click)="newUser(); 
